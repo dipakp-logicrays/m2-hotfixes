@@ -48,10 +48,11 @@ define(["mage/translate", "Magento_PageBuilder/js/events", "Magento_Ui/js/modal/
     _.each(viewportStyles, function (styles, name) {
       _.each(styles, function (stylesArray, selector) {
         var element = document.querySelector(selector);
-
-        _.each(stylesArray, function (style) {
-          element.setAttribute("data-" + name + "-style", element.getAttribute("data-" + name + "-style") ? element.getAttribute("data-" + name + "-style") + style.cssText : style.cssText);
-        });
+        if (element) {
+          _.each(stylesArray, function (style) {
+            element.setAttribute("data-" + name + "-style", element.getAttribute("data-" + name + "-style") ? element.getAttribute("data-" + name + "-style") + style.cssText : style.cssText);
+          });
+        }
       });
     });
 
